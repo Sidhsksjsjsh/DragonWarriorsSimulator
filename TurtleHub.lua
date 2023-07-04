@@ -120,7 +120,7 @@ while wait() do
 if eggname == nil then
   Dialog("Egg","Open the egg u want to open once before using this")
   else
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3,eggname,randomtable)
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3, eggname, randomtable)
   end
 end
 end
