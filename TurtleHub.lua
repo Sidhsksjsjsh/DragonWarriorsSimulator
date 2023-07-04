@@ -119,7 +119,6 @@ while wait() do
   if _G.egg == false then break end
 if eggname == nil then
   Dialog("Egg","Open the egg u want to open once before using this")
-wait(2)
   else
     game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3, eggname, randomtable)
   end
