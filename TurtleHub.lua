@@ -100,8 +100,8 @@ local ohNumber1 = 33
 local ohNumber2 = i
 
 game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(ohNumber1, ohNumber2)
-end)
 end
+end)
 
 Dialog("Auto Rejoin","Pls wait 10 seconds")        
 wait(10)
