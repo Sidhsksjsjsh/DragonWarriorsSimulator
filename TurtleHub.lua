@@ -130,7 +130,7 @@ T2:AddToggle({
   Name = "Equip Best",
   Default = false,
   Callback = function(Value)
-  _G.BestPet
+  _G.BestPet = Value
     while wait() do
       if _G.BestPet == false then break end
          game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(21)
