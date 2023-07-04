@@ -111,7 +111,7 @@ end
 })
 
 T2:AddToggle({
-  Name = "Egg Opener",
+  Name = "Egg Opener (Auto Delete Enabled)",
   Default = false,
   Callback = function(Value)
 _G.egg = Value
@@ -120,11 +120,23 @@ while wait() do
 if eggname == nil then
   Dialog("Egg","Open the egg u want to open once before using this")
   else
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3, eggname, randomtable)
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3,eggname,randomtable)
   end
 end
 end
   })
+
+T2:AddToggle({
+  Name = "Equip Best",
+  Default = false,
+  Callback = function(Value)
+  _G.BestPet
+    while wait() do
+      if _G.BestPet == false then break end
+         game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(21)
+    end
+end
+})
 
 T3:AddButton({
   Name = "Teleport to World 1",
