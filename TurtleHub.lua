@@ -76,9 +76,7 @@ T1:AddToggle({
      while wait() do
        if _G.Heal == false then break end
   for _,v in pairs(game.Players:GetPlayers()) do
-  if v.Name == game.Players.LocalPlayer then
-  game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(2,v:GetAttribute("TeamID"),{game.Players.LocalPlayer},2050)
-  end
+  game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(2,game.Players.LocalPlayer:GetAttribute("TeamID"),{game.Players.LocalPlayer.Name},-math.huge)
   end
   end
 end
