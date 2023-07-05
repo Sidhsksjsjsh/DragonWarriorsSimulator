@@ -62,7 +62,7 @@ PremiumOnly = false
 
 local Status = T2:AddParagraph("Egg","Egg name: #EGG_ERROR \nDelete: #DELETE_ERROR \nPrice: #PRICE_ERROR | Your money: #MONEY_ERROR")
 
-local IconImage = 12860696020
+local IconImage = "rbxassetid://12860696020"
 T2:AddDropdown({
   Name = "Select Egg",
   Default = "EGGA",
@@ -210,7 +210,7 @@ Coin: 12860696020
 ]]
 local AutoDelete = "{1,2,3,4,5}"
 while wait() do
-if IconImage == 12860696020 then
+if IconImage == "rbxassetid://12860696020" then
          Status:Set("Egg name: " .. tostring(_G.eggmetatable) .." \nDelete: " .. tostring(AutoDelete) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[_G.eggmetatable].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " [Coins] | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
       else
          Status:Set("Egg name: " .. tostring(_G.eggmetatable) .." \nDelete: " .. tostring(AutoDelete) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[_G.eggmetatable].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " [Diamonds] | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
