@@ -92,7 +92,7 @@ T1:AddToggle({
      while wait() do
        if _G.Heal == false then break end
   for _,v in pairs(game.Players:GetPlayers()) do
-  game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(2,game.Players.LocalPlayer:GetAttribute("TeamID"),{game.Players.LocalPlayer.Name},-math.huge)
+  game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(2, v:GetAttribute("TeamID"), {game.Players.LocalPlayer.Name}, -math.huge)
   end
   end
 end
@@ -191,7 +191,7 @@ T3:AddButton({
 
 while wait() do
    if eggname == nil then
-      Status:Set("Egg name: nil \nDelete: {nil} \nPrice: 0 | Your money: 0","Egg Status")
+      Status:Set("Egg name: nil \nDelete: {nil} \nPrice: 0 | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
 else
       Status:Set("Egg name: " .. tostring(eggname) .." \nDelete: " .. tostring(randomtable) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[eggname].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
 end
