@@ -37,6 +37,8 @@ Icon = "rbxassetid://0",
 PremiumOnly = false
 })
 
+local Status = T2:AddParagraph("Egg","Egg name: #EGG_ERROR \nDelete: #DELETE_ERROR")
+
 local T3 = Window:MakeTab({
 Name = "Teleport",
 Icon = "rbxassetid://0",
@@ -172,3 +174,11 @@ T3:AddButton({
     game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldC")
     end
   })
+
+while wait() do
+   if eggname == nil then
+      Status:Set("Egg name: nil \nDelete: {nil}","Egg Status")
+else
+      Status:Set("Egg name: " .. tostring(eggname) .." \nDelete: " .. tostring(randomtable),"Egg Status")
+end
+end
