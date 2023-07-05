@@ -25,6 +25,20 @@ local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 
 local Window = OrionLib:MakeWindow({Name = "VIP Turtle Hub V3", HidePremium = false, SaveConfig = true, ConfigFolder = "TurtleFi"})
 
+local MakeItNumber = {
+        K = "",
+        M = "",
+	B = "",
+	T = "",
+	Qa = "",
+	Qi = ""
+
+}
+
+function ConvertNumber(PriceTag)
+return PriceTag:gsub("K",MakeItNumber.K):gsub("M",MakeItNumber.M):gsub("B",MakeItNumber.B):gsub("T",MakeItNumber.T):gsub("Qa",MakeItNumber.Qa):gsub("Qi",MakeItNumber.Qi)
+end
+
 local T1 = Window:MakeTab({
 Name = "Main",
 Icon = "rbxassetid://0",
@@ -37,7 +51,7 @@ Icon = "rbxassetid://0",
 PremiumOnly = false
 })
 
-local Status = T2:AddParagraph("Egg","Egg name: #EGG_ERROR \nDelete: #DELETE_ERROR")
+local Status = T2:AddParagraph("Egg","Egg name: #EGG_ERROR \nDelete: #DELETE_ERROR \nPrice: #PRICE_ERROR | Your money: #MONEY_ERROR")
 
 local T3 = Window:MakeTab({
 Name = "Teleport",
@@ -177,8 +191,8 @@ T3:AddButton({
 
 while wait() do
    if eggname == nil then
-      Status:Set("Egg name: nil \nDelete: {nil}","Egg Status")
+      Status:Set("Egg name: nil \nDelete: {nil} \nPrice: 0 | Your money: 0","Egg Status")
 else
-      Status:Set("Egg name: " .. tostring(eggname) .." \nDelete: " .. tostring(randomtable),"Egg Status")
+      Status:Set("Egg name: " .. tostring(eggname) .." \nDelete: " .. tostring(randomtable) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs.EGGZ.PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
 end
 end
