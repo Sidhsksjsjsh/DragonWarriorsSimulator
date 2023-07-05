@@ -45,6 +45,15 @@ Icon = "rbxassetid://0",
 PremiumOnly = false
 })
 
+local EggList = {}
+function AddTable(TableString,LocalTrigger)
+for _,v in pairs(TableString:GetChildren()) do
+	table.insert(LocalTrigger,v.Name)
+end
+end
+
+AddTable(game:GetService("Workspace").PetEggs,EggList)
+
 local T2 = Window:MakeTab({
 Name = "Egg",
 Icon = "rbxassetid://0",
@@ -52,6 +61,17 @@ PremiumOnly = false
 })
 
 local Status = T2:AddParagraph("Egg","Egg name: #EGG_ERROR \nDelete: #DELETE_ERROR \nPrice: #PRICE_ERROR | Your money: #MONEY_ERROR")
+
+local IconImage = 12860696020
+T2:AddDropdown({
+  Name = "Select Egg",
+  Default = "EGGA",
+  Options = EggList,
+  Callback = function(Value)
+    _G.eggmetatable = Value
+    IconImage = game:GetService("Workspace").PetEggs[Value].PriceTag.Part.SurfaceGui.Frame.Icon.Image
+  end    
+})
 
 local T3 = Window:MakeTab({
 Name = "Teleport",
@@ -141,18 +161,14 @@ end
 })
 
 T2:AddToggle({
-  Name = "Egg Opener (Auto Delete Enabled)",
+  Name = "Egg Opener",
   Default = false,
   Callback = function(Value)
 _G.egg = Value
 while wait() do
   if _G.egg == false then break end
-if eggname == nil then
-  Dialog("Egg","Open the egg u want to open once before using this")
-  else
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3, eggname, randomtable)
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3,_G.eggmetatable,{})
   end
-end
 end
   })
 
@@ -188,11 +204,15 @@ T3:AddButton({
     game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldC")
     end
   })
-
+--[[
+Diamond: 12860695788
+Coin: 12860696020
+]]
+local AutoDelete = "{1,2,3,4,5}"
 while wait() do
-   if eggname == nil then
-      Status:Set("Egg name: nil \nDelete: {nil} \nPrice: 0 | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
-else
-      Status:Set("Egg name: " .. tostring(eggname) .." \nDelete: " .. tostring(randomtable) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[eggname].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
+if IconImage == 12860696020 then
+         Status:Set("Egg name: " .. tostring(_G.eggmetatable) .." \nDelete: " .. tostring(AutoDelete) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[_G.eggmetatable].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " [Coins] | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
+      else
+         Status:Set("Egg name: " .. tostring(_G.eggmetatable) .." \nDelete: " .. tostring(AutoDelete) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[_G.eggmetatable].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " [Diamonds] | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
 end
 end
