@@ -193,6 +193,6 @@ while wait() do
    if eggname == nil then
       Status:Set("Egg name: nil \nDelete: {nil} \nPrice: 0 | Your money: 0","Egg Status")
 else
-      Status:Set("Egg name: " .. tostring(eggname) .." \nDelete: " .. tostring(randomtable) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs.EGGZ.PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
+      Status:Set("Egg name: " .. tostring(eggname) .." \nDelete: " .. tostring(randomtable) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[eggname].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
 end
 end
