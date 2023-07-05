@@ -212,7 +212,9 @@ local AutoDelete = "{1,2,3,4,5}"
 while wait() do
 if IconImage == "rbxassetid://12860696020" then
          Status:Set("Egg name: " .. tostring(_G.eggmetatable) .." \nDelete: " .. tostring(AutoDelete) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[_G.eggmetatable].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " [Coins] | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
-      else
+      elseif IconImage == "rbxassetid://12860695788" then
          Status:Set("Egg name: " .. tostring(_G.eggmetatable) .." \nDelete: " .. tostring(AutoDelete) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[_G.eggmetatable].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " [Diamonds] | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
+	else
+	Status:Set("Egg name: " .. tostring(_G.eggmetatable) .." \nDelete: " .. tostring(AutoDelete) .. " \nPrice: " .. tostring(game:GetService("Workspace").PetEggs[_G.eggmetatable].PriceTag.Part.SurfaceGui.Frame.Price.Text) .. " [Robux] | Your money: " .. tostring(game.Players.LocalPlayer.leaderstats["💰 Coin"].Value),"Egg Status")
 end
 end
