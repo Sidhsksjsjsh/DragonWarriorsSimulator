@@ -163,6 +163,7 @@ T4:AddDropdown({
   end    
 })
 ]]
+local DiamondUI = true
 T4:AddButton({
   Name = "Add +1M Diamonds",
   Callback = function()
@@ -176,6 +177,13 @@ end)
 end
 
 Dialog("Config (Spam Click)","Diamonds have been added to your currency (diamonds)")
+
+if DiamondUI == true then
+game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
+wait(0.5)
+DiamondUI = false
+end
+			
 if EnabledRejoin == true then
 Dialog("Auto Rejoin","Pls wait 10 seconds")        
 wait(10)
