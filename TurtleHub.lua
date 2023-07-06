@@ -79,6 +79,12 @@ Icon = "rbxassetid://0",
 PremiumOnly = false
 })
 
+local T4 = Window:MakeTab({
+Name = "Config",
+Icon = "rbxassetid://0",
+PremiumOnly = false
+})
+
 function Dialog(title,desc)
 OrionLib:MakeNotification({
    Name = title,
@@ -146,7 +152,7 @@ T1:AddToggle({
 end
 })
 
-T1:AddButton({
+T4:AddButton({
   Name = "Get 1M+ Diamonds",
   Callback = function()
 game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
@@ -168,7 +174,7 @@ game:GetService("TeleportService"):Teleport(game.PlaceId)
 end
 })
 
-T1:AddButton({
+T4:AddButton({
   Name = "Get 700 Token (Summer Event)",
   Callback = function()
 game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
@@ -188,6 +194,30 @@ game:GetService("TeleportService"):Teleport(game.PlaceId)
 end
 })
 
+T4:AddToggle({
+  Name = "Auto Auto Add Diamonds (Better)",
+  Default = false,
+  Callback = function(Value)
+   _G.ManualDiamonds = Value
+   game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
+     while wait() do
+	if _G.ManualDiamonds == false then break end
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"1")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"2")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"3")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"4")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"5")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"6")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"7")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"8")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"9")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"10")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"11")
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"12")
+	end
+end
+})
+
 T2:AddToggle({
   Name = "Egg Opener",
   Default = false,
@@ -195,7 +225,7 @@ T2:AddToggle({
 _G.egg = Value
 while wait() do
   if _G.egg == false then break end
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3,_G.eggmetatable,{})
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3, _G.eggmetatable, randomtable)
   end
 end
   })
