@@ -25,6 +25,8 @@ local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 
 local Window = OrionLib:MakeWindow({Name = "VIP Turtle Hub V3", HidePremium = false, SaveConfig = true, ConfigFolder = "TurtleFi"})
 
+local EnabledRejoin = false
+
 local MakeItNumber = {
         K = "",
         M = "",
@@ -151,26 +153,35 @@ T1:AddToggle({
   end
 end
 })
-
+--[[
+T4:AddDropdown({
+  Name = "Select the Diamond Package",
+  Default = "Package 1",
+  Options = {"Package 1", "Package 2", "Package 3", "Package 4", "Package 5", "Package 6", "Package 7", "Package 8", "Package 9", "Package 10"},
+  Callback = function(Value)
+    _G.DiamondPackage = Value
+  end    
+})
+]]
 T4:AddButton({
-  Name = "Get 1M+ Diamonds",
+  Name = "Add +1M Diamonds",
   Callback = function()
 game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
 for i=1,5000 do
     task.spawn(function()
 for i=1,12 do
-local ohNumber1 = 27
-local ohNumber2 = i
-
-game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(ohNumber1, ohNumber2)
+game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27, i)
 end
 end)
 end
 
+Dialog("Config (Spam Click)","Diamonds have been added to your currency (diamonds)")
+if EnabledRejoin == true then
 Dialog("Auto Rejoin","Pls wait 10 seconds")        
 wait(10)
 game.Players.LocalPlayer:Kick("We are now rejoining")
 game:GetService("TeleportService"):Teleport(game.PlaceId)
+end
 end
 })
 
@@ -195,26 +206,10 @@ end
 })
 
 T4:AddToggle({
-  Name = "Auto Auto Add Diamonds (Better)",
+  Name = "Auto Rejoin",
   Default = false,
   Callback = function(Value)
-   _G.ManualDiamonds = Value
-  -- game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
-     while wait() do
-	if _G.ManualDiamonds == false then break end
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"1")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"2")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"3")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"4")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"5")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"6")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"7")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"8")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"9")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"10")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"11")
-           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"12")
-	end
+   EnabledRejoin = Value
 end
 })
 
