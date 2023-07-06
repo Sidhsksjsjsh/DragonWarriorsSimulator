@@ -111,8 +111,36 @@ T1:AddToggle({
   _G.Heal = Value
      while wait() do
        if _G.Heal == false then break end
-  for _,v in pairs(game.Players:GetPlayers()) do
-  game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(2, v:GetAttribute("TeamID"), {game.Players.LocalPlayer.Name}, -math.huge)
+  for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
+	if v.Name == game.Players.LocalPlayer then
+           game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(2, v:GetAttribute("TeamID"), {game.Players.LocalPlayer.Name}, -math.huge)
+  end
+  end
+  end
+end
+})
+
+T1:AddToggle({
+  Name = "Auto Start Wave",
+  Default = false,
+  Callback = function(Value)
+  _G.WaveStarter = Value
+     while wait() do
+       if _G.WaveStarter == false then break end
+  for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+  if v.ClassName == "BasePart" and v.Name == "TeamArea1" then
+   if game.Players.LocalPlayer:DistanceFromCharacter(v.Position) < 300 then
+     OrionLib:Teleport(game:GetService("Workspace").TeamArea1.Part)
+   end
+  elseif v.ClassName == "BasePart" and v.Name == "TeamArea2" then
+   if game.Players.LocalPlayer:DistanceFromCharacter(v.Position) < 300 then
+     OrionLib:Teleport(game:GetService("Workspace").TeamArea2.Part)
+   end
+  elseif v.ClassName == "BasePart" and v.Name == "TeamArea3" then
+   if game.Players.LocalPlayer:DistanceFromCharacter(v.Position) < 300 then
+     OrionLib:Teleport(game:GetService("Workspace").TeamArea3.Part)
+  end
+  end
   end
   end
 end
