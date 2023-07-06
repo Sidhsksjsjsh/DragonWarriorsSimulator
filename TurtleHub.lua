@@ -43,7 +43,7 @@ end
 
 local T1 = Window:MakeTab({
 Name = "Main",
-Icon = "rbxassetid://0",
+Icon = "rbxassetid://13973566545",
 PremiumOnly = false
 })
 
@@ -58,7 +58,7 @@ AddTable(game:GetService("Workspace").PetEggs,EggList)
 
 local T2 = Window:MakeTab({
 Name = "Egg",
-Icon = "rbxassetid://0",
+Icon = "rbxassetid://13973566545",
 PremiumOnly = false
 })
 
@@ -77,13 +77,13 @@ T2:AddDropdown({
 
 local T3 = Window:MakeTab({
 Name = "Teleport",
-Icon = "rbxassetid://0",
+Icon = "rbxassetid://13973566545",
 PremiumOnly = false
 })
 
 local T4 = Window:MakeTab({
 Name = "Config",
-Icon = "rbxassetid://0",
+Icon = "rbxassetid://13973566545",
 PremiumOnly = false
 })
 
@@ -91,7 +91,7 @@ function Dialog(title,desc)
 OrionLib:MakeNotification({
    Name = title,
    Content = desc,
-   Image = "rbxassetid://0",
+   Image = "rbxassetid://13973566545",
    Time = 5
 })
 end
