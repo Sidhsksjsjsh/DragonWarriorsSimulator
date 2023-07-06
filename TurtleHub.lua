@@ -199,7 +199,7 @@ T4:AddToggle({
   Default = false,
   Callback = function(Value)
    _G.ManualDiamonds = Value
-   game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
+  -- game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
      while wait() do
 	if _G.ManualDiamonds == false then break end
            game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,"1")
