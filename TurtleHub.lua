@@ -87,6 +87,12 @@ Icon = "rbxassetid://13973566545",
 PremiumOnly = false
 })
 
+local T5 = Window:MakeTab({
+Name = "Event",
+Icon = "rbxassetid://13973566545",
+PremiumOnly = false
+})
+
 function Dialog(title,desc)
 OrionLib:MakeNotification({
    Name = title,
@@ -192,7 +198,7 @@ game:GetService("TeleportService"):Teleport(game.PlaceId)
 end
 end
 })
-
+--[[
 T4:AddButton({
   Name = "Get 700 Token (Summer Event)",
   Callback = function()
@@ -211,7 +217,7 @@ wait(10)
 game.Players.LocalPlayer:Kick("We are now rejoining")
 game:GetService("TeleportService"):Teleport(game.PlaceId)
 end
-})
+})]]
 
 T4:AddToggle({
   Name = "Auto Rejoin",
@@ -245,6 +251,18 @@ T2:AddToggle({
 end
 })
 
+T5:AddToggle({
+  Name = "Hatch Event Egg",
+  Default = false,
+  Callback = function(Value)
+  _G.V_Event_Egg_12 = Value
+    while wait() do
+      if _G.V_Event_Egg_12 == false then break end
+         game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(36,{})
+    end
+end
+})
+
 T3:AddButton({
   Name = "Teleport to World 1",
   Callback = function()
@@ -265,6 +283,14 @@ T3:AddButton({
     game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldC")
     end
   })
+
+T3:AddButton({
+  Name = "Teleport to World 4",
+  Callback = function()
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldD")
+    end
+  })
+
 --[[
 Diamond: 12860695788
 Coin: 12860696020
