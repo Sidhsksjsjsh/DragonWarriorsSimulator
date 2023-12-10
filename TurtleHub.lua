@@ -188,8 +188,8 @@ T4:AddButton({
 game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
 for i=1,5000 do
     task.spawn(function()
-for i=1,12 do
-game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27, i)
+for array = 1,12 do
+game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,array)
 end
 end)
 end
@@ -210,6 +210,36 @@ game:GetService("TeleportService"):Teleport(game.PlaceId)
 end
 end
 })
+
+T4:AddButton({
+  Name = "Add 5m++ Diamonds",
+  Callback = function()
+game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
+for i = 1,math.huge do
+    task.spawn(function()
+for array = 1,12 do
+game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(27,array)
+end
+end)
+end
+
+Dialog("Config (Spam Click)","Diamonds have been added to your currency (diamonds)")
+
+if DiamondUI == true then
+game:GetService("Players").LocalPlayer.PlayerGui.MainGUI:Destroy()
+wait(0.5)
+DiamondUI = false
+end
+			
+if EnabledRejoin == true then
+Dialog("Auto Rejoin","Pls wait 10 seconds")        
+wait(10)
+game.Players.LocalPlayer:Kick("We are now rejoining")
+game:GetService("TeleportService"):Teleport(game.PlaceId)
+end
+end
+})
+
 --[[
 T4:AddButton({
   Name = "Get 700 Token (Summer Event)",
@@ -240,7 +270,7 @@ end
 })
 
 T4:AddButton({
-  Name = "Auto Fusion Pet",
+  Name = "Auto Fusion Pet (Max 5-Stars)",
   Callback = function()
     game:GetService("ReplicatedStorage")["Remotes"]["ServerEvent_GameManager"]:FireServer(5,FusionPet1,FusionPet2)
   end
@@ -253,7 +283,7 @@ T2:AddToggle({
 _G.egg = Value
 while wait() do
   if _G.egg == false then break end
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3, _G.eggmetatable, randomtable)
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(3,_G.eggmetatable,randomtable)
   end
 end
   })
@@ -285,35 +315,35 @@ end
 T3:AddButton({
   Name = "Teleport to World 1",
   Callback = function()
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldA")
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30,"WorldA")
   end
 })
 
 T3:AddButton({
   Name = "Teleport to World 2",
   Callback = function()
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldB")
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30,"WorldB")
   end
 })
 
   T3:AddButton({
   Name = "Teleport to World 3",
   Callback = function()
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldC")
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30,"WorldC")
   end
 })
 
 T3:AddButton({
   Name = "Teleport to World 4",
   Callback = function()
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldD")
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30,"WorldD")
   end
 })
 
 T3:AddButton({
   Name = "Teleport to World 5",
   Callback = function()
-    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldE")
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30,"WorldE")
   end
 })
 
