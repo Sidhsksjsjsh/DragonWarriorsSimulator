@@ -3,17 +3,29 @@ local randomtable = nil
 local mt = getrawmetatable(game);
 setreadonly(mt,false)
 local namecall = mt.__namecall
+local FusionPet1 = nil
+local FusionPet2 = nil
 
 mt.__namecall = newcclosure(function(self, ...)
 	local Method = getnamecallmethod()
 	local Args = {...}
 
 	if Method == 'FireServer' and self.Name == 'ServerEvent_GameManager' and tonumber(Args[1]) == 3  then
-eggname = Args[2]
-randomtable = Args[3]
-end
+           eggname = Args[2]
+           randomtable = Args[3]
+	elseif Method == 'FireServer' and self.Name == 'ServerEvent_GameManager' and Args[1] == 5 then
+	   FusionPet1 = Args[2]
+	   FusionPet2 = Args[3]
+        end
 	return namecall(self, ...) 
 end)
+
+local args = {
+    [1] = 5,
+    [2] = "Kaldrigos|493322693|236",
+    [3] = "Kaldrigos|493322646|227"
+}
+
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -227,6 +239,13 @@ T4:AddToggle({
 end
 })
 
+T4:AddButton({
+  Name = "Auto Fusion Pet",
+  Callback = function()
+    game:GetService("ReplicatedStorage")["Remotes"]["ServerEvent_GameManager"]:FireServer(5,FusionPet1,FusionPet2)
+  end
+})
+
 T2:AddToggle({
   Name = "Egg Opener",
   Default = false,
@@ -266,30 +285,37 @@ end
 T3:AddButton({
   Name = "Teleport to World 1",
   Callback = function()
-game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldA")
-end
-  })
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldA")
+  end
+})
 
 T3:AddButton({
   Name = "Teleport to World 2",
   Callback = function()
-  game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldB")
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldB")
   end
-  })
+})
 
   T3:AddButton({
   Name = "Teleport to World 3",
   Callback = function()
     game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldC")
-    end
-  })
+  end
+})
 
 T3:AddButton({
   Name = "Teleport to World 4",
   Callback = function()
     game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldD")
-    end
-  })
+  end
+})
+
+T3:AddButton({
+  Name = "Teleport to World 5",
+  Callback = function()
+    game:GetService("ReplicatedStorage").Remotes.ServerEvent_GameManager:FireServer(30, "WorldE")
+  end
+})
 
 --[[
 Diamond: 12860695788
